@@ -57,7 +57,12 @@
 <?php } else { ?>
  <a href="../admin/checkout_privs_list.php" class="alt1"><?php echo $navLoc->getText("Checkout Privs");?></a><br>
 <?php } ?>
-
+<?php
+	$list = getPlugIns('admin.nav');
+	for ($x=0; $x<count($list); $x++) {
+		include_once ($list[$x]);
+	}
+	?>
 <?php if ($nav == "themes") { ?>
  &raquo; <?php echo $navLoc->getText("adminThemes");?><br>
 <?php } else { ?>
@@ -73,10 +78,4 @@
 -->
 
 <a href="javascript:popSecondary('../shared/help.php<?php if (isset($helpPage)) echo "?page=".H(addslashes(U($helpPage))); ?>')"><?php echo $navLoc->getText("help");?></a>
-<?php
-	$list = getPlugIns('admin.nav');
-	for ($x=0; $x<count($list); $x++) {
-		include_once ($list[$x]);
-	}
-	?>
 
